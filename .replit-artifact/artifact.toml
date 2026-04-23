@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/android-webview/"
+title = "AI CTO Android App"
+version = "1.0.0"
+id = "artifacts/android-webview"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/android-webview/" ]
+localPort = 22118
+
+[services.development]
+run = "pnpm --filter @workspace/android-webview run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/android-webview", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/android-webview", "run", "serve" ]
+
+[services.env]
+PORT = "22118"
+BASE_PATH = "/android-webview/"
